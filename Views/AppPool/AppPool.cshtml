@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<AppPool.Models.AppPools>
+
+@{
+    ViewBag.Title = "App Pools";
+}
+
+<h2>App Pools</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appPool in Model)
+        {
+            <tr>
+                <td>@appPool.Name</td>
+                <td>@appPool.Status</td>
+                <td>
+                    <a href="@Url.Action("Start", new { name = appPool.Name })" class="btn btn-success">Start</a>
+                    <a href="@Url.Action("Stop", new { name = appPool.Name })" class="btn btn-danger">Stop</a>
+                    <a href="@Url.Action("Recycle", new { name = appPool.Name })" class="btn btn-warning">Recycle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
